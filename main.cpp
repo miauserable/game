@@ -2,16 +2,18 @@
 #include <iostream>
 
 #include "util.h"
+#include "player.h"
 using namespace sf;
 int main()
 {
     enum class State {
         m,p,o};
 
-    //char key[4]
-      //  = { 'w', 's', 'a', 'd'};
+    char key[4]
+      = { 'w', 's', 'a', 'd'};
     State state = State::m;
     RenderWindow window(VideoMode(640, 480), "hi");
+    window.setFramerateLimit(240);
     Font font;
     float XSET = window.getSize().x*0.02;
     float YSET = window.getSize().y/2;
@@ -59,6 +61,13 @@ int main()
     cxd.setColor(Color(242, 130, 221));
     cyu.setColor(Color(242, 130, 221));
     cyd.setColor(Color(242, 130, 221));
+
+    Texture _PTEXTURE;
+    if (!_PTEXTURE.loadFromFile("s1.png"))
+        std::cout << "Texture Error, please make sure all files are present." << std::endl;
+
+    Player _player(_PTEXTURE);
+    Sprite _PSPRITE = _player.getSprite();
     while (window.isOpen())
     {
         Event event;
@@ -85,7 +94,16 @@ int main()
                         state = State::m;
                     }
                 } break;
-            //case Event::KeyPressed:
+            case Event::KeyPressed:
+                if (event.key.code == sf::Keyboard::W) {
+                    _PSPRITE.move(0, -5);
+                } if (event.key.code == sf::Keyboard::S) {
+                    _PSPRITE.move(0, 5);
+                } if (event.key.code == sf::Keyboard::A) {
+                    _PSPRITE.move(-5, 0);
+                } if (event.key.code == sf::Keyboard::D) {
+                    _PSPRITE.move(5, 0);
+                }
             }
         }
 
@@ -113,6 +131,7 @@ int main()
                 window.draw(cyd);
             }
         } if (state == State:: p) {
+            window.draw(_PSPRITE);
             window.draw(b);
         }
         window.display();
