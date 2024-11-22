@@ -11,7 +11,7 @@ Player::Player() {}
 Player::Player(Texture& TTEXTURE) {
     _Sprite.setTexture(TTEXTURE);
     _Sprite.setPosition(0,0);
-    _Sprite.setScale(1.5f, 1.5f);
+    _Sprite.setScale(0.25f, 0.25f);
 }
 
 Sprite Player::getSprite() const
@@ -19,16 +19,16 @@ Sprite Player::getSprite() const
     return _Sprite;
 }
 
-void moveLeft() {
+void Player::moveLeft() {
     _Sprite.move(-5, 0);
 }
-void moveRight() {
+void Player::moveRight() {
     _Sprite.move(5, 0);
 }
-void moveUp() {
+void Player::moveUp() {
     _Sprite.move(0, 5);
 }
-void moveDown() {
+void Player::moveDown() {
     _Sprite.move(0, -5);
 }
-void heal(int x) { _Health + x; }
+void Player::heal(int x) { _Health + x; }
