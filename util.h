@@ -5,9 +5,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-bool checkButtonCollision(sf::Text t, sf::RenderWindow& w);
-bool optionsCheck();
-void makeOptions();
-//int readL(int l);
+#include <iostream>
 
+void _INIT(sf::RenderWindow& w);
+void _RENDERMENU(sf::RenderWindow& w);
+void _RENDERGAME(sf::RenderWindow& w);
+bool checkCollision(sf::RenderWindow& w, const std::string& s);
 #endif
