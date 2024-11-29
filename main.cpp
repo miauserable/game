@@ -10,7 +10,6 @@ int main() {
 
     _INIT(window);
     while (window.isOpen()) {
-        window.clear();
         Event event;
         while (window.pollEvent(event)) {
         switch (event.type) {
@@ -41,7 +40,7 @@ int main() {
             }
             break;
         }
-
+        window.clear();
         if (_GSTATE == _STATE::m) { _RENDERMENU(window); }
         if (_GSTATE == _STATE::p) { _RENDERGAME(window); }
         window.display();
