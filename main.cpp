@@ -27,6 +27,19 @@ int main() {
                     _GSTATE = _STATE::m;
                 } break;
             }
+        case Event::KeyPressed:
+            if (event.key.code == Keyboard::Escape && _GSTATE == _STATE::p) {
+                _GSTATE = _STATE::m;
+            } if (event.key.code == Keyboard::W) {
+                MovePlayer(window, "up");
+            } if (event.key.code == Keyboard::S) {
+                MovePlayer(window, "down");
+            } if (event.key.code == Keyboard::A) {
+                MovePlayer(window, "left");
+            } if (event.key.code == Keyboard::D) {
+                MovePlayer(window, "right");
+            }
+            break;
         }
 
         if (_GSTATE == _STATE::m) { _RENDERMENU(window); }

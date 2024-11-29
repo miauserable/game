@@ -10,7 +10,8 @@ float XSET;
 float YSET;
 bool _SET;
 std::unordered_map<std::string, FloatRect> textBoundsMap;
-
+int _POSX = 0;
+int _POSY = 0;
 void _INIT(sf::RenderWindow& w){
     if (!font.loadFromFile("font.ttf")) {
         std::cerr << "Error loading font" << std::endl;
@@ -38,6 +39,7 @@ void _RENDERMENU(sf::RenderWindow& w){
 void _RENDERGAME(sf::RenderWindow& w) {
     Text _PLAYER("t", font, 48);
     _PLAYER.setFillColor(Color::Red);
+    _PLAYER.setPosition(_POSX, _POSY);
     w.draw(_PLAYER);
 }
 
@@ -49,4 +51,19 @@ bool checkCollision(sf::RenderWindow& w, const std::string& s) {
         }
     }
     return false;
+}
+
+void MovePlayer(sf::RenderWindow& w, const std::string& s) {
+    if (s == "up") {
+        _POSY -= 1;
+    }
+    if (s == "down") {
+        _POSY += 1;
+    }
+    if (s == "left") {
+        _POSX -= 1;
+    }
+    if (s == "right") {
+        _POSX += 1;
+    }
 }

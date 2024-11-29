@@ -11,4 +11,5 @@ void _INIT(sf::RenderWindow& w);
 void _RENDERMENU(sf::RenderWindow& w);
 void _RENDERGAME(sf::RenderWindow& w);
 bool checkCollision(sf::RenderWindow& w, const std::string& s);
+void MovePlayer(sf::RenderWindow& w, const std::string& s);
 #endif
