@@ -35,7 +35,11 @@ void _RENDERMENU(sf::RenderWindow& w){
     textBoundsMap["play"] = p.getGlobalBounds();
     textBoundsMap["quit"] = q.getGlobalBounds();
 }
-void _RENDERGAME(sf::RenderWindow& w) {}
+void _RENDERGAME(sf::RenderWindow& w) {
+    Text _PLAYER("t", font, 48);
+    _PLAYER.setFillColor(Color::Red);
+    w.draw(_PLAYER);
+}
 
 bool checkCollision(sf::RenderWindow& w, const std::string& s) {
     Vector2i _MOUSEPOS = Mouse::getPosition(w);

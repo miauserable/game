@@ -19,25 +19,20 @@ int main() {
             break;
         case Event::MouseButtonPressed:
             if (event.mouseButton.button == Mouse::Left) {
-            if (checkCollision(window, "play")) {
-                _GSTATE = _STATE::p;
-            } else if (checkCollision(window, "quit")) {
-                window.close();
-            } else if (checkCollision(window, "play")) {
-                _GSTATE = _STATE::m;
-            }
-            }
-            break;
+                if (checkCollision(window, "play")) {
+                    _GSTATE = _STATE::p;
+                } else if (checkCollision(window, "quit")) {
+                    window.close();
+                } else if (checkCollision(window, "play")) {
+                    _GSTATE = _STATE::m;
+                } break;
             }
         }
-    
-        if (_GSTATE == _STATE::m) {
-            _RENDERMENU(window);
-        }
-        if (_GSTATE == _STATE::p) {
-            _RENDERGAME(window);
-        }
+
+        if (_GSTATE == _STATE::m) { _RENDERMENU(window); }
+        if (_GSTATE == _STATE::p) { _RENDERGAME(window); }
         window.display();
+    }
     }
     return 0;
 }
