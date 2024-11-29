@@ -35,16 +35,11 @@ void _RENDERMENU(sf::RenderWindow& w){
     textBoundsMap["play"] = p.getGlobalBounds();
     textBoundsMap["quit"] = q.getGlobalBounds();
 }
-
-void _RENDERGAME(sf::RenderWindow& w) {
-}
+void _RENDERGAME(sf::RenderWindow& w) {}
 
 bool checkCollision(sf::RenderWindow& w, const std::string& s) {
     Vector2i _MOUSEPOS = Mouse::getPosition(w);
-
-    // Check if the text object exists in the map
     if (textBoundsMap.find(s) != textBoundsMap.end()) {
-        // Check if the mouse is in the text box
         if (textBoundsMap[s].contains(static_cast<sf::Vector2f>(_MOUSEPOS))) {
             return true;
         }
